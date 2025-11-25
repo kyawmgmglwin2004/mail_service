@@ -21,7 +21,7 @@ const limiter = rateLimit({
 
 
 const corsOptions = {
-  origin: ['https://portfolio.kyawmgmglwin.site', 'http://portfolio.kyawmgmglwin.site'], 
+  origin: ['https://portfolio.kyawmgmglwin.site', 'http://portfolio.kyawmgmglwin.site', 'http://localhost:5173'], 
   optionsSuccessStatus: 200
 };
 app.use(cors(corsOptions));

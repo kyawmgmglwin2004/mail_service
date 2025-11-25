@@ -1,19 +1,29 @@
 import sentMailService from './mail_service.js';
 
- async function mailSenter(req, res) {
+async function mailSenter(req, res) {
   const { name, email, message } = req.body;
 
-  // Basic validation
   if (!name || !email || !message) {
     return res.status(400).json({ success: false, message: 'All fields are required.' });
   }
- try {
-     const result = await sentMailService(name, email, message);
-    return res.status(result.status).json({ success: result.success, message: result.message });
-  
- } catch (error) {
+
+  try {
+    console.log("Sending mail...", req.body);
+
+    const info = await sentMailService(name, email, message);
+    console.log("Mail sent:", info);
+
+    // respond success
+    return res.status(200).json({
+      success: true,
+      message: 'Mail sent successfully!',
+      info: info // optional, can remove in production
+    });
+
+  } catch (error) {
+    console.error("Mail sending error:", error);
     return res.status(500).json({ success: false, message: 'Server Error' });
- }
+  }
 };
 
 export default mailSenter;
