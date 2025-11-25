@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 
 // CREATE FUNCTION
 async function sentMailService(name, email, message) {
-    console.log("Preparing to send mail...", { name, email, message });
+    
   const mailOptions = {
     from: process.env.EMAIL,
     to: process.env.YOUR_PERSONAL_EMAIL,
@@ -27,7 +27,7 @@ async function sentMailService(name, email, message) {
 
   // send
   const info = await transporter.sendMail(mailOptions);
-  console.log("Mail sent:", info);
+ 
   return info;
 }
 

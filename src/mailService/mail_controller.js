@@ -8,10 +8,8 @@ async function mailSenter(req, res) {
   }
 
   try {
-    console.log("Sending mail...", req.body);
 
     const info = await sentMailService(name, email, message);
-    console.log("Mail sent:", info);
 
     // respond success
     return res.status(200).json({
